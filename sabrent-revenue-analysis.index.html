@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sabrent · 24-Month Revenue Analysis · GMDS Agency</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#2a2b2b;--s1:#323333;--s2:#3a3b3b;--s3:#434444;
+  --bd:rgba(255,255,255,0.10);
+  --t1:#ffffff;--t2:#b0b0b0;--t3:#757575;
+  --pu:#5b3089;--bl:#51a0d8;--gn:#22c55e;--rd:#ef4444;--am:#f59e0b;
+  --grad:linear-gradient(135deg,#5b3089 0%,#51a0d8 100%);
+  --fh:'Montserrat','Helvetica Neue',Arial,sans-serif;
+  --fb:'DM Sans','Inter','Helvetica Neue',Arial,sans-serif;
+}
+body{background:var(--bg);color:var(--t1);font-family:var(--fb);min-height:100vh}
+.nav{background:rgba(42,43,43,0.97);border-bottom:1px solid var(--bd);padding:14px 32px;display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:100;backdrop-filter:blur(10px)}
+.nav img{height:30px}
+.nav-sep{width:1px;height:22px;background:var(--bd)}
+.nav-title{font-family:var(--fh);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--t2)}
+.nav-sub{font-size:12px;color:var(--t3);margin-top:1px}
+.hero{background:linear-gradient(135deg,rgba(91,48,137,.14) 0%,rgba(81,160,216,.07) 100%);border-bottom:1px solid var(--bd);padding:20px 32px;display:flex;flex-wrap:wrap;gap:0;align-items:center}
+.hstat{padding:0 24px}
+.hstat:first-child{padding-left:0}
+.hstat-val{font-family:var(--fh);font-weight:800;font-size:22px;color:var(--t1);line-height:1.1}
+.hstat-lab{font-size:12px;color:var(--t3);margin-top:2px}
+.hsep{width:1px;height:36px;background:var(--bd)}
+.badge{display:inline-flex;align-items:center;gap:6px;background:rgba(81,160,216,.12);border:1px solid rgba(81,160,216,.25);border-radius:20px;padding:5px 12px;font-size:12px;color:var(--bl);font-weight:600;font-family:var(--fh);margin-right:16px}
+.badge .dot{width:6px;height:6px;border-radius:50%;background:var(--bl);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.main{padding:32px;max-width:1200px;margin:0 auto}
+.section{margin-bottom:48px}
+.sec-eyebrow{font-family:var(--fh);font-weight:700;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--t3);margin-bottom:6px}
+.sec-title{font-family:var(--fh);font-weight:700;font-size:21px;color:var(--t1);margin-bottom:3px}
+.sec-sub{font-size:13px;color:var(--t2);margin-bottom:18px}
+.card{background:var(--s1);border:1px solid var(--bd);border-radius:12px;padding:24px}
+.card-flush{background:var(--s1);border:1px solid var(--bd);border-radius:12px;overflow:hidden}
+.legend{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:14px}
+.leg-item{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--t2)}
+.leg-dot{width:10px;height:10px;border-radius:2px}
+.leg-line{width:20px;height:3px;border-radius:2px}
+.tt{position:absolute;background:#1c1d1d;border:1px solid var(--bd);border-radius:8px;padding:10px 14px;pointer-events:none;opacity:0;transition:opacity .12s;white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.45);z-index:20}
+.tt-lab{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--t3);font-family:var(--fh);font-weight:700;margin-bottom:3px}
+.tt-val{font-family:var(--fh);font-weight:800;font-size:18px;color:var(--t1)}
+.tt-note{font-size:11px;color:var(--t2);margin-top:2px}
+.ins-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.ins-pill{display:flex;align-items:center;gap:7px;background:var(--s2);border:1px solid var(--bd);border-radius:8px;padding:8px 13px;font-size:13px;color:var(--t2)}
+.ins-pill strong{color:var(--t1)}
+.ptable{width:100%;border-collapse:collapse}
+.ptable th{font-family:var(--fh);font-size:10px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--t3);text-align:left;padding:10px 14px;border-bottom:1px solid var(--bd)}
+.ptable th.r{text-align:right}
+.ptable td{padding:10px 14px;font-size:13px;color:var(--t1);border-bottom:1px solid rgba(255,255,255,.04);vertical-align:top}
+.ptable td.r{text-align:right;color:var(--t2)}
+.ptable td.m{text-align:right;font-weight:700;color:var(--t1)}
+.ptable tbody tr:hover td{background:rgba(91,48,137,.05)}
+.ptable tbody tr:last-child td{border-bottom:none}
+.bar-mini{display:block;height:2px;border-radius:1px;background:var(--grad);margin-top:5px}
+.spike-tag{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 5px;border-radius:3px;background:rgba(245,158,11,.12);color:var(--am);border:1px solid rgba(245,158,11,.3);margin-left:5px;vertical-align:middle}
+.rank-n{color:var(--t3);font-size:12px}
+.spike-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:700px){.spike-grid{grid-template-columns:1fr}}
+.spike-card{background:var(--s1);border:1px solid var(--bd);border-radius:12px;padding:24px;position:relative;overflow:hidden}
+.spike-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad)}
+.sp-date{font-family:var(--fh);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);margin-bottom:7px}
+.sp-amount{font-family:var(--fh);font-weight:800;font-size:34px;color:var(--t1);line-height:1}
+.sp-amount-sub{font-size:12px;color:var(--t3);margin-bottom:16px;margin-top:2px}
+.sp-order{background:var(--s2);border:1px solid var(--bd);border-radius:8px;padding:14px;margin-bottom:10px}
+.sp-order-hd{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:7px}
+.sp-on{font-family:var(--fh);font-weight:700;font-size:12px;color:var(--bl)}
+.sp-ot{font-family:var(--fh);font-weight:800;font-size:15px;color:var(--t1)}
+.sp-prod{font-size:13px;color:var(--t1);font-weight:600;margin-bottom:3px}
+.sp-detail{font-size:12px;color:var(--t2)}
+.untracked-tag{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:3px 8px;border-radius:4px;background:rgba(245,158,11,.12);color:var(--am);border:1px solid rgba(245,158,11,.3);margin-top:8px}
+.sp-rest{font-size:13px;color:var(--t3);padding:8px 0 6px}
+.attr-box{background:rgba(91,48,137,.08);border:1px solid rgba(91,48,137,.2);border-radius:8px;padding:12px 14px;margin-top:8px}
+.attr-title{font-family:var(--fh);font-weight:700;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#9d72c4;margin-bottom:8px}
+.attr-list{list-style:none}
+.attr-list li{display:flex;gap:8px;font-size:12px;color:var(--t2);margin-bottom:6px;line-height:1.5}
+.attr-list li:last-child{margin-bottom:0}
+.attr-list li .ch{color:var(--t1);font-weight:600;min-width:120px;flex-shrink:0}
+.utm-box{background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.2);border-radius:10px;padding:18px 22px;margin-top:16px;display:flex;gap:16px;align-items:flex-start}
+.utm-icon{font-size:22px;line-height:1;flex-shrink:0}
+.utm-title{font-family:var(--fh);font-weight:700;font-size:13px;color:var(--am);margin-bottom:5px}
+.utm-text{font-size:13px;color:var(--t2);line-height:1.6}
+.utm-text strong{color:var(--t1)}
+.base-card{background:var(--s1);border:1px solid var(--bd);border-radius:12px;padding:22px 26px;margin-top:16px}
+.base-title{font-family:var(--fh);font-weight:700;font-size:14px;color:var(--t1);margin-bottom:14px}
+.base-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:600px){.base-grid{grid-template-columns:1fr}}
+.base-stat-lab{font-family:var(--fh);font-size:10px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--t3);margin-bottom:5px}
+.base-stat-val{font-family:var(--fh);font-weight:800;font-size:24px;color:var(--t1);line-height:1}
+.base-stat-sub{font-size:12px;color:var(--t2);margin-top:3px}
+.cvr-stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
+@media(max-width:700px){.cvr-stat-grid{grid-template-columns:repeat(2,1fr)}}
+.cvr-stat{background:var(--s2);border:1px solid var(--bd);border-radius:10px;padding:16px 18px}
+.cvr-stat.hi{border-color:rgba(81,160,216,.3);background:rgba(81,160,216,.07)}
+.cvr-stat-lab{font-family:var(--fh);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);margin-bottom:6px}
+.cvr-stat-val{font-family:var(--fh);font-weight:800;font-size:26px;color:var(--t1);line-height:1}
+.cvr-stat.hi .cvr-stat-val{color:var(--bl)}
+.cvr-stat-sub{font-size:12px;color:var(--t2);margin-top:3px}
+.cvr-stat-delta{font-size:11px;color:var(--gn);font-weight:700;margin-top:4px}
+.gmds-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(81,160,216,.12);border:1px solid rgba(81,160,216,.25);border-radius:12px;padding:3px 8px;font-size:10px;color:var(--bl);font-weight:600;font-family:var(--fh);margin-left:6px;vertical-align:middle}
+.footer{border-top:1px solid var(--bd);padding:18px 32px;display:flex;justify-content:space-between;align-items:center;margin-top:24px}
+.footer-t{font-size:11px;color:var(--t3)}
+.footer img{height:22px;opacity:.65}
+@media(max-width:768px){.main{padding:16px}.hero{padding:16px}.nav{padding:12px 16px}.hstat{padding:0 14px}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <img id="nav-logo" alt="GMDS Agency">
+  <div class="nav-sep"></div>
+  <div>
+    <div class="nav-title">Sabrent · Revenue Intelligence</div>
+    <div class="nav-sub">24-Month Analysis · Shopify Total Store · Through July 23, 2026</div>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="badge"><div class="dot"></div>Live Store Data</div>
+  <div class="hsep"></div>
+  <div class="hstat"><div class="hstat-val">$550,777</div><div class="hstat-lab">24-month total revenue</div></div>
+  <div class="hsep"></div>
+  <div class="hstat"><div class="hstat-val">$36,833</div><div class="hstat-lab">July '26 (23 days)</div></div>
+  <div class="hsep"></div>
+  <div class="hstat"><div class="hstat-val" style="color:var(--gn)">+29.7%</div><div class="hstat-lab">vs June '26</div></div>
+  <div class="hsep"></div>
+  <div class="hstat"><div class="hstat-val" style="color:var(--gn)">+17.4%</div><div class="hstat-lab">YoY vs July '25</div></div>
+  <div class="hsep"></div>
+  <div class="hstat"><div class="hstat-val" style="color:var(--bl)">24-mo Record</div><div class="hstat-lab">Highest month on record</div></div>
+</div>
+
+<div class="main">
+
+  <!-- 24-MONTH REVENUE CHART -->
+  <div class="section">
+    <div class="sec-eyebrow">Month-over-Month Performance</div>
+    <div class="sec-title">24-Month Revenue Trend</div>
+    <div class="sec-sub">Total store revenue Aug 2024 – Jul 2026 · ✱ July 2026 is a partial month through July 23</div>
+    <div class="card">
+      <div class="legend">
+        <div class="leg-item"><div class="leg-dot" style="background:rgba(91,48,137,.8)"></div>Monthly revenue</div>
+        <div class="leg-item"><div class="leg-dot" style="background:#51a0d8"></div>July 2026 (current · partial)</div>
+      </div>
+      <div style="position:relative">
+        <canvas id="momChart"></canvas>
+        <div id="momTT" class="tt"><div class="tt-lab" id="ttLab"></div><div class="tt-val" id="ttVal"></div><div class="tt-note" id="ttNote"></div></div>
+      </div>
+      <div class="ins-row">
+        <div class="ins-pill">📈 July 2026 is already <strong>the all-time highest month</strong> in 24 months — with 8 days still to run</div>
+        <div class="ins-pill">🔁 Previous record: <strong>Mar 2025 — $36,540</strong></div>
+        <div class="ins-pill">📅 YoY: <strong>Jul '25 was $31,373</strong> — up +17.4%</div>
+        <div class="ins-pill">❄️ Consistent soft spots: <strong>January</strong> and <strong>October</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCT BREAKDOWN -->
+  <div class="section">
+    <div class="sec-eyebrow">July 2026 · July 1–23 Only</div>
+    <div class="sec-title">Revenue by Product</div>
+    <div class="sec-sub">Gross sales ranking · Top 12 of 82 products sold this month</div>
+    <div class="card-flush">
+      <table class="ptable">
+        <thead>
+          <tr>
+            <th style="padding-left:20px;width:36px">#</th>
+            <th>Product</th>
+            <th class="r">Gross Sales</th>
+            <th class="r">Net Sales</th>
+            <th class="r">Orders</th>
+            <th class="r" style="padding-right:20px">% of Total</th>
+          </tr>
+        </thead>
+        <tbody id="prodBody"></tbody>
+      </table>
+    </div>
+    <div class="ins-row">
+      <div class="ins-pill">⚠ Top 2 are <strong>inflated by untracked bulk orders</strong> — see spike analysis below</div>
+      <div class="ins-pill">💡 Excluding spikes, <strong>Rocket XTRM 5</strong> leads organic July at $3,560</div>
+    </div>
+  </div>
+
+  <!-- SPIKE DAY ANALYSIS -->
+  <div class="section">
+    <div class="sec-eyebrow">Spike Day Investigation</div>
+    <div class="sec-title">Two Outlier Days — No UTM Tracking</div>
+    <div class="sec-sub">Both spikes were driven by a single large order with no UTM parameters — the source channel is unknown but not without reasonable candidates</div>
+    <div class="spike-grid">
+
+      <!-- Jul 10 -->
+      <div class="spike-card">
+        <div class="sp-date">July 10, 2026</div>
+        <div class="sp-amount">$5,434</div>
+        <div class="sp-amount-sub">vs. ~$700 avg on normal July days</div>
+        <div class="sp-order">
+          <div class="sp-order-hd">
+            <div class="sp-on">Order #28466</div>
+            <div class="sp-ot">$3,863</div>
+          </div>
+          <div class="sp-prod">4 × Rocket 4 Plus SSD @ $879.99</div>
+          <div class="sp-detail">Antonio Pinedo · apinedo@photosonics.com</div>
+          <div class="sp-detail">Photosonics Inc. · via Online Store</div>
+          <div class="sp-detail" style="color:var(--gn);margin-top:4px">✓ Paid · Fulfilled</div>
+          <div class="untracked-tag">⚠ No UTM · Source Unknown</div>
+        </div>
+        <div class="sp-rest">Remaining 13 orders: $1,571 combined — normal day underneath the spike</div>
+        <div class="attr-box">
+          <div class="attr-title">Possible Attribution</div>
+          <ul class="attr-list">
+            <li><span class="ch">Google Organic</span>Photosonics is a professional cinema company. "Rocket 4 Plus SSD" is a high-intent commercial query. Improved product page rankings could have surfaced Sabrent for this search.</li>
+            <li><span class="ch">Google Shopping</span>B2B buyers typically validate pricing on Shopping before committing to a $3,500+ purchase. GMDS manages the Shopping campaigns.</li>
+            <li><span class="ch">Klaviyo Welcome</span>If the buyer visited the store prior to purchase, the Welcome Series may have been the final touch point that closed the sale.</li>
+            <li><span class="ch">Store Credibility</span>Optimized product pages and an active email presence signal a legitimate vendor — B2B buyers research trust signals before large orders.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Jul 21 -->
+      <div class="spike-card">
+        <div class="sp-date">July 21, 2026</div>
+        <div class="sp-amount">$14,115</div>
+        <div class="sp-amount-sub">vs. ~$700 avg on normal July days</div>
+        <div class="sp-order">
+          <div class="sp-order-hd">
+            <div class="sp-on">Order #28594</div>
+            <div class="sp-ot">$13,247</div>
+          </div>
+          <div class="sp-prod">64 × Rocket 2242 NVMe SSD @ $229.99</div>
+          <div class="sp-detail">Heidi Grover · heidikgrover@gmail.com</div>
+          <div class="sp-detail">via Online Store · Partially Refunded</div>
+          <div class="sp-detail" style="margin-top:4px"><span style="color:var(--gn)">✓ Fulfilled</span> · <span style="color:var(--am)">⚠ Partial refund applied</span></div>
+          <div class="untracked-tag">⚠ No UTM · Source Unknown</div>
+        </div>
+        <div class="sp-rest">Remaining 19 orders: $867 combined — normal day underneath the spike</div>
+        <div class="attr-box">
+          <div class="attr-title">Possible Attribution</div>
+          <ul class="attr-list">
+            <li><span class="ch">Google Organic</span>Searching by specific model name ("Rocket 2242 NVMe") indicates prior research elsewhere — the buyer came to purchase. SEO-optimized product pages may have made Sabrent the top result.</li>
+            <li><span class="ch">Google Shopping</span>Institutional buyers use Shopping to compare per-unit pricing in bulk. Sabrent's price point was competitive for a 64-unit order.</li>
+            <li><span class="ch">Klaviyo Abandonment</span>If the buyer visited the store before committing to 64 units, a browse or cart abandonment flow may have triggered the final purchase decision.</li>
+            <li><span class="ch">Signup Form</span>The signup form attributed $4,300 in Month 1 — this buyer may have entered the funnel through this channel on a prior visit.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- UTM Callout -->
+    <div class="utm-box">
+      <div class="utm-icon">🔗</div>
+      <div>
+        <div class="utm-title">Month 2 Required Action: UTM Tracking + GA4 Integration</div>
+        <div class="utm-text">
+          These two orders totaling <strong>$17,110 have no UTM parameters</strong>, making it impossible to confirm their source channel. For Month 2, we need: <strong>(1)</strong> UTM parameters on all Google Ads and Klaviyo links, <strong>(2)</strong> GA4 connected to Shopify via Elevar or the native pixel, and <strong>(3)</strong> Shopify conversions imported into Google Ads. With proper tracking in place, every dollar traces back to its source — including bulk orders like these. Month 1 already captured $13,031 in directly attributable revenue; full tracking would only increase that number.
+        </div>
+      </div>
+    </div>
+
+    <!-- Organic Baseline -->
+    <div class="base-card">
+      <div class="base-title">Organic Baseline — Excluding Both Spike Orders</div>
+      <div class="base-grid">
+        <div>
+          <div class="base-stat-lab">Organic Revenue</div>
+          <div class="base-stat-val">$19,722</div>
+          <div class="base-stat-sub">July total minus both spike orders</div>
+        </div>
+        <div>
+          <div class="base-stat-lab">Organic Daily Average</div>
+          <div class="base-stat-val">$939</div>
+          <div class="base-stat-sub">Across 21 non-spike days</div>
+        </div>
+        <div>
+          <div class="base-stat-lab">vs June '26</div>
+          <div class="base-stat-val" style="color:var(--t2)">≈ Flat</div>
+          <div class="base-stat-sub">Jun avg: $947/day — baseline holding steady</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONVERSION RATE -->
+  <div class="section">
+    <div class="sec-eyebrow">Friction Reduction · The Strongest Evidence</div>
+    <div class="sec-title">Conversion Rate — 24 Months</div>
+    <div class="sec-sub">The store always had traffic. What changed in GMDS Month 1 is how many of those visitors actually complete a purchase.</div>
+
+    <div class="cvr-stat-grid">
+      <div class="cvr-stat">
+        <div class="cvr-stat-lab">22-Month Historical Average</div>
+        <div class="cvr-stat-val">0.19%</div>
+        <div class="cvr-stat-sub">Aug '24 – May '26 baseline</div>
+      </div>
+      <div class="cvr-stat hi">
+        <div class="cvr-stat-lab">June 2026 <span class="gmds-badge">GMDS Month 0</span></div>
+        <div class="cvr-stat-val">0.33%</div>
+        <div class="cvr-stat-sub">81,059 sessions · 268 orders</div>
+        <div class="cvr-stat-delta">↑ +74% vs historical avg</div>
+      </div>
+      <div class="cvr-stat hi">
+        <div class="cvr-stat-lab">July 2026 <span class="gmds-badge">GMDS Month 1</span></div>
+        <div class="cvr-stat-val">0.40%</div>
+        <div class="cvr-stat-sub">60,097 sessions · 239 orders</div>
+        <div class="cvr-stat-delta">↑ +110% vs historical · ↑ +250% vs Jul '25</div>
+      </div>
+      <div class="cvr-stat hi">
+        <div class="cvr-stat-lab">Jul '26 Efficiency vs Jul '25</div>
+        <div class="cvr-stat-val">3.5×</div>
+        <div class="cvr-stat-sub">239 orders with 63% less traffic</div>
+        <div class="cvr-stat-delta">Jul '25: 187 orders / 163k sessions</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="legend">
+        <div class="leg-item"><div class="leg-line" style="background:rgba(91,48,137,.8);height:3px;border-radius:2px"></div>Historical CVR (pre-GMDS)</div>
+        <div class="leg-item"><div class="leg-line" style="background:#51a0d8;height:3px;border-radius:2px"></div>GMDS era CVR</div>
+        <div class="leg-item" style="gap:6px"><div style="width:20px;border-top:2px dashed rgba(255,255,255,.35)"></div>22-month avg (0.19%)</div>
+      </div>
+      <div style="position:relative">
+        <canvas id="cvrChart"></canvas>
+        <div id="cvrTT" class="tt"><div class="tt-lab" id="cttLab"></div><div class="tt-val" id="cttVal"></div><div class="tt-note" id="cttNote"></div></div>
+      </div>
+      <div class="ins-row">
+        <div class="ins-pill">📊 Jul '26 had <strong>60k sessions</strong> vs 163k in Jul '25 — and still closed <strong>28% more orders</strong></div>
+        <div class="ins-pill">🛒 More conversions from less traffic = <strong>reduced friction + higher-quality visitors</strong></div>
+        <div class="ins-pill">📈 Dec '25 was the previous CVR peak at 0.24% — <strong>Jul '26 beats it by +65%</strong> in the off-season</div>
+        <div class="ins-pill">⚙️ Likely drivers: optimized product pages, email capture, Welcome Series, abandonment flows</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-t">Powered by Shopify Analytics · Pulled July 24, 2026 · <em>July 2026 figures are partial (Jul 1–23 only)</em></div>
+  <img id="footer-logo" alt="GMDS Agency">
+</div>
+
+<script>
+const LOGO = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA5gAAAFSCAYAAACXJHBGAAAACXBIWXMAAAsSAAALEgHS3X78AAAgAElEQVR4nO2d7XXbytaFgXfd//KtQEoFUioQU4GVCixXYKYCUxWEqsBUBZEqsFRBpAoiVXDFCvCucTZsmMLHADMDzADPsxZX7k0oEgQGg9lzztknL4oiA8jz/F2WZWeLPxEAAAAAMITHoiheOXOAwJwpeZ4bsWhE44lehwLyfOnnCAAAAACC8lD58Mcsy4wAfdbrtSiKR07//EBgJkwl6ngmEVn+83jp5wYAAAAAkuBFgvOx8k+ioQmDwEwEicmVRGT5z6OlnxcAAAAAmCV7ic378p+IzjRAYEZKnucnEpLli6gkAAAAACyZFwnOewnOZ0ZDfCAwI0ERygsEJQAAAACAFVXBeUuEMw4QmBMiI54LvU4XeyIAAAAAANx5MkJTYhMDoYlAYI6MROWlRCVRSgAAAAAA/7xIbO4Qm+OCwBwB1VOuEZUAAAAAAKNTis0tdZvhQWAGolJTuY4g/bXsQVT2HTr8398oiuJ+/EMDAAAAgNTJ83x18BPKXuyH/3vqXuwmjXZLzWY4EJie0c1lUmA/jPzVDxXR+KjmtQhGAAAAAIgOrZnfVfq4n0wgPm+UQsua2SMITA9MEK18qPQEeiavHAAAAADmgPxKTiq938cQnUQ1PYLAdEC1lZcSlkeBvmZ/0O8HMQkAAAAAi0Gis9ofPuS6e6uoJrWaA0FgDkDCchMwDfYOQQkAAAAA8JYDwfk+0Cky6bMbhGZ/EJg9CCgsXyoNYm+D/ggAAAAAgBmR53nZV34VoGMDQrMnCEwLAglLevMAAAAAAHgkYM95hKYlCMwWAgjLfaUHD6ISAAAAACAQEptlL3pfdZsIzQ4QmDXIFdYMxs+ePvJBkcqd1wMFAAAAAIBO8jy/VGTTlyvtlYJGuM4egMA8IM/ztaKWrrscJlq508BjhwMAAAAAYGKUobiW2PSx3jfRzC3X9QcITKFmr1sPfSyfJCqJVgIAAAAARIqimj762Jv1/7ooCmPauXgWLzCVDrv1UGf5oB0MBhYAAAAAQCIo0LTxkD5r6jPXS0+bXbTA9JQOe4NpDwAAAABA2lRMgVwCT4tPm12kwFTu9c5xlwIHKQAAAACAmeGpk4TJbrxcolZYnMD0ELVc7GABAAAAAFgKHoJSi4xmLkZgehggi6qx1Pk6cfyYx6XnoAMAAABA2nio0VxUgGoRAlMOUduBUcsXCctZuMJWhGP5MiZHZ/rPZx6b0B5idnDKOtVnvV7Lf4c50nJQfcO7pZ8HCMpzzA9xTxt4ADA9r3hwLAtpCiM0jwf88L0MgGbfaWLWAlMOseYivh/w53uJ0iQbqFYWMCsJx3ceG8uGohShpQC9j32hCP3J89xMzJ85dRAIM4+cxDxvcw8AJI2JRN2aNQriu5lIX6z1GhKYmb3T7GwFpqIktwN3GO904ZMQNhroZxKTq8CRyKl4kPh8VOotk3rC5Hn+PPDeBOjij9hrXRCYAMlxpzXlLaU/UKJgznZgIMtkSF7MdT07S4Gp8PWXAX/6ImF5G+CwvCFBuaq8XJvDpsqDoszPAuVIoPKoJQAAAABJRU5ErkJggg==';
+document.getElementById('nav-logo').src = LOGO;
+document.getElementById('footer-logo').src = LOGO;
+
+const prods = [
+  {name:'Rocket 2242 NVMe SSD',gross:18109.24,net:12045.62,orders:11,spike:true},
+  {name:'Rocket 4 Plus SSD',gross:5279.94,net:5279.94,orders:2,spike:true},
+  {name:'Rocket XTRM 5',gross:3559.94,net:2305.20,orders:5},
+  {name:'USB 3.2 3.5" SATA Docking Station',gross:2839.59,net:2263.72,orders:8},
+  {name:'USB External Stereo 3D Sound Adapter',gross:1321.53,net:1186.68,orders:8},
+  {name:'USB 3.0 Hub With Power Switches',gross:1143.72,net:1131.12,orders:22},
+  {name:'Voltik 252W 8-Port USB PD 3.0 Charger',gross:989.89,net:967.41,orders:10},
+  {name:'Rocket 2230 NVMe 4.0 1TB',gross:839.97,net:839.97,orders:3},
+  {name:'16-Port USB 3.0 Hub and Charger',gross:749.50,net:730.77,orders:6},
+  {name:'Rocket V30 A2 MicroSDXC',gross:701.82,net:602.40,orders:2},
+  {name:'Rocket nano XTRM Thunderbolt 3 SSD',gross:649.99,net:552.50,orders:1},
+  {name:'Thunderbolt 3 Rocket XTRM Plus',gross:649.99,net:649.99,orders:1},
+];
+const grandTotal = 44794.35, maxGross = prods[0].gross;
+const tbody = document.getElementById('prodBody');
+prods.forEach((p,i) => {
+  const share = ((p.gross/grandTotal)*100).toFixed(1);
+  const bw = Math.round((p.gross/maxGross)*160);
+  const tr = document.createElement('tr');
+  tr.innerHTML = `<td style="padding-left:20px" class="rank-n">${i+1}</td><td>${p.name}${p.spike?'<span class="spike-tag">untracked</span>':''}<span class="bar-mini" style="width:${bw}px"></span></td><td class="m">$${p.gross.toLocaleString('en-US',{minimumFractionDigits:2})}</td><td class="r">$${p.net.toLocaleString('en-US',{minimumFractionDigits:2})}</td><td class="r">${p.orders}</td><td class="r" style="padding-right:20px">${share}%</td>`;
+  tbody.appendChild(tr);
+});
+
+const monthly = [
+  {l:'Aug 24',v:13974.82},{l:'Sep 24',v:22062.94},{l:'Oct 24',v:25102.22},
+  {l:'Nov 24',v:30971.12},{l:'Dec 24',v:24776.63},{l:'Jan 25',v:12588.48},
+  {l:'Feb 25',v:17390.36},{l:'Mar 25',v:36540.28},{l:'Apr 25',v:14267.14},
+  {l:'May 25',v:14919.91},{l:'Jun 25',v:29500.37},{l:'Jul 25',v:31373.44},
+  {l:'Aug 25',v:17719.54},{l:'Sep 25',v:27728.20},{l:'Oct 25',v:12867.17},
+  {l:'Nov 25',v:26541.22},{l:'Dec 25',v:32498.70},{l:'Jan 26',v:21505.77},
+  {l:'Feb 26',v:13782.16},{l:'Mar 26',v:21826.39},{l:'Apr 26',v:22318.33},
+  {l:'May 26',v:15286.43},{l:'Jun 26',v:28403.10},{l:'Jul 26✱',v:36832.94,cur:true},
+];
+
+const cvrData = [
+  {l:'Aug 24',v:0.1802,s:69381,o:125},{l:'Sep 24',v:0.1822,s:72444,o:132},
+  {l:'Oct 24',v:0.1856,s:73810,o:137},{l:'Nov 24',v:0.1497,s:91511,o:137},
+  {l:'Dec 24',v:0.1522,s:83444,o:127},{l:'Jan 25',v:0.1486,s:81428,o:121},
+  {l:'Feb 25',v:0.1861,s:74709,o:139},{l:'Mar 25',v:0.1994,s:82263,o:164},
+  {l:'Apr 25',v:0.1791,s:94342,o:169},{l:'May 25',v:0.1273,s:102135,o:130},
+  {l:'Jun 25',v:0.1456,s:103057,o:150},{l:'Jul 25',v:0.1144,s:163533,o:187},
+  {l:'Aug 25',v:0.1744,s:96350,o:168},{l:'Sep 25',v:0.1756,s:86569,o:152},
+  {l:'Oct 25',v:0.1506,s:102920,o:155},{l:'Nov 25',v:0.1463,s:96374,o:141},
+  {l:'Dec 25',v:0.2377,s:95479,o:227},{l:'Jan 26',v:0.2372,s:90654,o:215},
+  {l:'Feb 26',v:0.1838,s:79976,o:147},{l:'Mar 26',v:0.2537,s:89865,o:228},
+  {l:'Apr 26',v:0.2723,s:81532,o:222},{l:'May 26',v:0.2486,s:82068,o:204},
+  {l:'Jun 26',v:0.3306,s:81059,o:268,gmds:true},{l:'Jul 26✱',v:0.3977,s:60097,o:239,gmds:true},
+];
+const histAvg = cvrData.slice(0,22).reduce((s,m)=>s+m.v,0)/22;
+
+function drawBarChart() {
+  const canvas = document.getElementById('momChart');
+  const dpr = window.devicePixelRatio||1;
+  const W = canvas.parentElement.clientWidth||900;
+  const H = 300;
+  canvas.width=W*dpr; canvas.height=H*dpr; canvas.style.width=W+'px'; canvas.style.height=H+'px';
+  const ctx = canvas.getContext('2d'); ctx.scale(dpr,dpr);
+  const pad={top:16,right:16,bottom:50,left:66};
+  const cw=W-pad.left-pad.right, ch=H-pad.top-pad.bottom;
+  const n=monthly.length, slotW=cw/n, bw=slotW*.58, yMax=42000;
+  [0,10000,20000,30000,40000].forEach(v=>{
+    const y=pad.top+ch-(v/yMax)*ch;
+    ctx.beginPath(); ctx.strokeStyle='rgba(255,255,255,0.06)'; ctx.lineWidth=1;
+    ctx.moveTo(pad.left,y); ctx.lineTo(pad.left+cw,y); ctx.stroke();
+    ctx.fillStyle='rgba(117,117,117,.8)'; ctx.font='10px DM Sans,system-ui'; ctx.textAlign='right';
+    ctx.fillText('$'+(v===0?'0':v/1000+'k'),pad.left-8,y+4);
+  });
+  monthly.forEach((m,i)=>{
+    const x=pad.left+i*slotW+(slotW-bw)/2, bh=(m.v/yMax)*ch, y=pad.top+ch-bh, r=3;
+    const grd=ctx.createLinearGradient(0,y,0,y+bh);
+    if(m.cur){grd.addColorStop(0,'rgba(81,160,216,1)');grd.addColorStop(1,'rgba(81,160,216,.4)');}
+    else{grd.addColorStop(0,'rgba(91,48,137,.88)');grd.addColorStop(1,'rgba(91,48,137,.42)');}
+    ctx.fillStyle=grd;
+    ctx.beginPath(); ctx.moveTo(x+r,y); ctx.lineTo(x+bw-r,y); ctx.arcTo(x+bw,y,x+bw,y+r,r);
+    ctx.lineTo(x+bw,y+bh); ctx.lineTo(x,y+bh); ctx.lineTo(x,y+r); ctx.arcTo(x,y,x+r,y,r);
+    ctx.closePath(); ctx.fill();
+    ctx.save(); ctx.translate(x+bw/2,pad.top+ch+10); ctx.rotate(-Math.PI/4);
+    ctx.fillStyle=m.cur?'rgba(81,160,216,.9)':'rgba(117,117,117,.65)';
+    ctx.font=m.cur?'bold 9px DM Sans,system-ui':'9px DM Sans,system-ui';
+    ctx.textAlign='right'; ctx.fillText(m.l,0,0); ctx.restore();
+  });
+  const tt=document.getElementById('momTT');
+  canvas.onmousemove=e=>{
+    const rect=canvas.getBoundingClientRect(), mx=e.clientX-rect.left, my=e.clientY-rect.top;
+    let hit=false;
+    monthly.forEach((m,i)=>{
+      const x=pad.left+i*slotW+(slotW-bw)/2, bh=(m.v/yMax)*ch, y=pad.top+ch-bh;
+      if(mx>=x&&mx<=x+bw&&my>=y&&my<=y+bh){
+        document.getElementById('ttLab').textContent=m.l;
+        document.getElementById('ttVal').textContent='$'+Math.round(m.v).toLocaleString('en-US');
+        document.getElementById('ttNote').textContent=m.cur?'Through July 23 — month still running':'';
+        tt.style.left=Math.min(x+bw+8,W-160)+'px'; tt.style.top=(y-4)+'px'; tt.style.opacity='1'; hit=true;
+      }
+    });
+    if(!hit) tt.style.opacity='0';
+  };
+  canvas.onmouseleave=()=>{tt.style.opacity='0';};
+}
+
+function drawCVRChart() {
+  const canvas = document.getElementById('cvrChart');
+  const dpr = window.devicePixelRatio||1;
+  const W = canvas.parentElement.clientWidth||900;
+  const H = 280;
+  canvas.width=W*dpr; canvas.height=H*dpr; canvas.style.width=W+'px'; canvas.style.height=H+'px';
+  const ctx = canvas.getContext('2d'); ctx.scale(dpr,dpr);
+  const pad={top:20,right:20,bottom:52,left:62};
+  const cw=W-pad.left-pad.right, ch=H-pad.top-pad.bottom;
+  const n=cvrData.length, slotW=cw/n, yMax=0.48;
+
+  // GMDS era shading
+  const gx = pad.left + 22*slotW;
+  ctx.fillStyle='rgba(81,160,216,0.06)';
+  ctx.fillRect(gx, pad.top, cw-22*slotW, ch);
+  ctx.fillStyle='rgba(81,160,216,0.45)'; ctx.font='bold 10px DM Sans,system-ui'; ctx.textAlign='left';
+  ctx.fillText('GMDS Era', gx+6, pad.top+14);
+
+  // Grid
+  [0,0.1,0.2,0.3,0.4].forEach(v=>{
+    const y=pad.top+ch-(v/yMax)*ch;
+    ctx.beginPath(); ctx.strokeStyle='rgba(255,255,255,0.06)'; ctx.lineWidth=1;
+    ctx.moveTo(pad.left,y); ctx.lineTo(pad.left+cw,y); ctx.stroke();
+    ctx.fillStyle='rgba(117,117,117,.8)'; ctx.font='10px DM Sans,system-ui'; ctx.textAlign='right';
+    ctx.fillText(v.toFixed(1)+'%',pad.left-8,y+4);
+  });
+
+  // Avg dashed line
+  const avgY=pad.top+ch-(histAvg/yMax)*ch;
+  ctx.beginPath(); ctx.setLineDash([5,4]); ctx.strokeStyle='rgba(255,255,255,.28)';
+  ctx.lineWidth=1.5; ctx.moveTo(pad.left,avgY); ctx.lineTo(pad.left+cw,avgY); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle='rgba(255,255,255,.35)'; ctx.font='10px DM Sans,system-ui'; ctx.textAlign='left';
+  ctx.fillText('avg 0.19%',pad.left+4,avgY-5);
+
+  const pts=cvrData.map((m,i)=>({x:pad.left+i*slotW+slotW/2,y:pad.top+ch-(m.v/yMax)*ch,gmds:m.gmds}));
+
+  // Pre-GMDS line
+  ctx.beginPath(); ctx.strokeStyle='rgba(91,48,137,.8)'; ctx.lineWidth=2.5; ctx.lineJoin='round';
+  pts.slice(0,23).forEach((p,i)=>{ if(i===0) ctx.moveTo(p.x,p.y); else ctx.lineTo(p.x,p.y); });
+  ctx.stroke();
+  // GMDS line
+  ctx.beginPath(); ctx.strokeStyle='rgba(81,160,216,.95)'; ctx.lineWidth=3; ctx.lineJoin='round';
+  pts.slice(21).forEach((p,i)=>{ if(i===0) ctx.moveTo(p.x,p.y); else ctx.lineTo(p.x,p.y); });
+  ctx.stroke();
+  // GMDS area fill
+  ctx.beginPath();
+  ctx.moveTo(pts[22].x,pad.top+ch); ctx.lineTo(pts[22].x,pts[22].y);
+  ctx.lineTo(pts[23].x,pts[23].y); ctx.lineTo(pts[23].x,pad.top+ch); ctx.closePath();
+  ctx.fillStyle='rgba(81,160,216,0.12)'; ctx.fill();
+
+  // Points
+  pts.forEach(p=>{
+    ctx.beginPath(); ctx.arc(p.x,p.y,p.gmds?6:4,0,Math.PI*2);
+    ctx.fillStyle=p.gmds?'#51a0d8':'rgba(91,48,137,.9)'; ctx.fill();
+    if(p.gmds){ctx.beginPath();ctx.arc(p.x,p.y,9,0,Math.PI*2);ctx.strokeStyle='rgba(81,160,216,.35)';ctx.lineWidth=2;ctx.stroke();}
+  });
+
+  // X labels
+  cvrData.forEach((m,i)=>{
+    const x=pad.left+i*slotW+slotW/2;
+    ctx.save(); ctx.translate(x,pad.top+ch+10); ctx.rotate(-Math.PI/4);
+    ctx.fillStyle=m.gmds?'rgba(81,160,216,.9)':'rgba(117,117,117,.65)';
+    ctx.font=m.gmds?'bold 9px DM Sans,system-ui':'9px DM Sans,system-ui';
+    ctx.textAlign='right'; ctx.fillText(m.l,0,0); ctx.restore();
+  });
+
+  const tt=document.getElementById('cvrTT');
+  canvas.onmousemove=e=>{
+    const rect=canvas.getBoundingClientRect(), mx=e.clientX-rect.left, my=e.clientY-rect.top;
+    let hit=false;
+    pts.forEach((p,i)=>{
+      if(Math.sqrt((mx-p.x)**2+(my-p.y)**2)<18){
+        const m=cvrData[i];
+        document.getElementById('cttLab').textContent=m.l+(m.gmds?' · GMDS Era':'');
+        document.getElementById('cttVal').textContent=m.v.toFixed(4)+'%';
+        document.getElementById('cttNote').textContent=m.s.toLocaleString()+' sessions · '+m.o+' orders';
+        tt.style.left=Math.min(p.x+14,W-170)+'px'; tt.style.top=(p.y-30)+'px'; tt.style.opacity='1'; hit=true;
+      }
+    });
+    if(!hit) tt.style.opacity='0';
+  };
+  canvas.onmouseleave=()=>{tt.style.opacity='0';};
+}
+
+function draw(){drawBarChart();drawCVRChart();}
+draw();
+window.addEventListener('resize',()=>requestAnimationFrame(draw));
+</script>
+</body>
+</html>
