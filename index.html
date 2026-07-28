@@ -72,7 +72,7 @@ body{background:var(--bg);color:var(--t1);font-family:var(--fb);min-height:100vh
 .sp-on{font-family:var(--fh);font-weight:700;font-size:12px;color:var(--bl)}
 .sp-ot{font-family:var(--fh);font-weight:800;font-size:15px;color:var(--t1)}
 .sp-prod{font-size:13px;color:var(--t1);font-weight:600;margin-bottom:3px}
-.sp-detail{font-size:12px;color:var(--t2]}
+.sp-detail{font-size:12px;color:var(--t2)}
 .untracked-tag{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:3px 8px;border-radius:4px;background:rgba(245,158,11,.12);color:var(--am);border:1px solid rgba(245,158,11,.3);margin-top:8px}
 .sp-rest{font-size:13px;color:var(--t3);padding:8px 0 6px}
 .attr-box{background:rgba(91,48,137,.08);border:1px solid rgba(91,48,137,.2);border-radius:8px;padding:12px 14px;margin-top:8px}
@@ -409,20 +409,30 @@ body{background:var(--bg);color:var(--t1);font-family:var(--fb);min-height:100vh
 </div>
 
 <script>
-const LOGO = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA5gAAAFSCAYAAACXJHBGAAAACXBIWXMAAAsSAAALEgHS3X78AAAgAElEQVR4nO2d7XXbytaFgXfd//KtQEoFUioQU4GVCixXYKYCUxWEqsBUBZEqsFRBpAoiVXDFCvCucTZsmMLHADMDzADPsxZX7k0oEgQGg9lzztknL4oiA8jz/F2WZWeLPxEAAAAAMITHoiheOXOAwJwpeZ4bsWhE44lehwLyfOnnCAAAAACC8lD58Mcsy4wAfdbrtSiKR07//EBgJkwl6ngmEVn+83jp5wYAAAAAkuBFgvOx8k+ioQmDwEwEicmVRGT5z6OlnxcAAAAAmCV7ic378p+IzjRAYEZKnucnEpLli6gkAAAAACyZFwnOewnOZ0ZDfCAwI0ERygsEJQAAAACAFVXBeUuEMw4QmBMiI54LvU4XeyIAAAAAANx5MkJTYhMDoYlAYI6MROWlRCVRSgAAAAAA/7xIbO4Qm+OCwBwB1VOuEZUAAAAAAKNTis0tdZvhQWAGolJTuY4g/bXsQVT2HTr8398oiuJ+/EMDAAAAgNTJ83x18BPKXuyH/3vqXuwmjXZLzWY4EJie0c1lUmA/jPzVDxXR+KjmtQhGAAAAAIgOrZnfVfq4n0wgPm+UQsua2SMITA9MEK18qPQEeiavHAAAAADmgPxKTiq938cQnUQ1PYLAdEC1lZcSlkeBvmZ/0O8HMQkAAAAAi0Gis9ofPuS6e6uoJrWaA0FgDkDCchMwDfYOQQkAAAAA8JYDwfk+0Cky6bMbhGZ/EJg9CCgsXyoNYm+D/ggAAAAAgBmR53nZV34VoGMDQrMnCEwLAglLevMAAAAAAHgkYM95hKYlCMwWAgjLfaUHD6ISAAAAACAQEptlL3pfdZsIzQ4QmDXIFdYMxs+ePvJBkcqd1wMFAAAAAIBO8jy/VGTTlyvtlYJGuM4egMA8IM/ztaKWrrscJlq508BjhwMAAAAAYGKUobiW2PSx3jfRzC3X9QcITKFmr1sPfSyfJCqJVgIAAAAARIqimj762Jv1/7ooCmPauXgWLzCVDrv1UGf5oB0MBhYAAAAAQCIo0LTxkD5r6jPXS0+bXbTA9JQOe4NpDwAAAABA2lRMgVwCT4tPm12kwFTu9c5xlwIHKQAAAACAmeGpk4TJbrxcolZYnMD0ELVc7GABAAAAAFgKHoJSi4xmLkZgehggi6qx1Pk6cfyYx6XnoAMAAABA2nio0VxUgGoRAlMOUduBUcsXCctZuMJWhGP5MiZHZ/rPZx6b0B5idnDKOtVnvV7Lf4c50nJQfcO7pZ8HCMpzzA9xTxt4ADA9r3hwLAtpCiM0jwf88L0MgGbfaWLWAlMOseYivh/w53uJ0iQbqFYWMCsJx3ceG8uGohShpQC9j32hCP3J89xMzJ85dRAIM4+cxDxvcw8AJI2JRN2aNQriu5lIX6z1GhKYmb3T7GwFpqIktwN3GO904ZMQNhroZxKTq8CRyKl4kPh8VOotk3rC5Hn+PPDeBOjij9hrXRCYAMlxpzXlLaU/UKJgznZgIMtkSF7MdT07S4Gp8PWXAX/6ImF5G+CwvCFBuaq8XJvDpsqDoszPAuVIoPKoJQAAAABJRU5ErkJggg==';
+const LOGO = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA5gAAAFSCAYAAACXJHBGAAAACXBIWXMAAAsSAAALEgHS3X78AAAgAElEQVR4nO2d7XXbytaFgXfd//KtQEoFUioQU4GVCixXYKYCUxWEqsBUBZEqsFRBpAoiVXDFCvCucTZsmMLHADMDzADPsxZX7k0oEgQGg9lzztknL4oiA8jz/F2WZWeLPxEAAAAAMITHoiheOXOAwJwpeZ4bsWhE44lehwLyfOnnCAAAAACC8lD58Mcsy4wAfdbrtSiKR07//EBgJkwl6ngmEVn+83jp5wYAAAAAkuBFgvOx8k+ioQmDwEwEicmVRGT5z6OlnxcAAAAAmCV7ic378p+IzjRAYEZKnucnEpLli6gkAAAAACyZFwnOewnOZ0ZDfCAwI0ERygsEJQAAAACAFVXBeUuEMw4QmBMiI54LvU4XeyIAAAAAANx5MkJTYhMDoYlAYI6MROWlRCVRSgAAAAAA/7xIbO4Qm+OCwBwB1VOuEZUAAAAAAKNTis0tdZvhQWAGolJTuY4g/bXsQVT2HTr8398oiuJ+/EMDAAAAgNTJ83x18BPKXuyH/3vqXuwmjXZLzWY4EJie0c1lUmA/jPzVDxXR+KjmtQhGAAAAAIgOrZnfVfq4n0wgPm+UQsua2SMITA9MEK18qPQEeiavHAAAAADmgPxKTiq938cQnUQ1PYLAdEC1lZcSlkeBvmZ/0O8HMQkAAAAAi0Gis9ofPuS6e6uoJrWaA0FgDkDCchMwDfYOQQkAAAAA8JYDwfk+0Cky6bMbhGZ/EJg9CCgsXyoNYm+D/ggAAAAAgBmR53nZV34VoGMDQrMnCEwLAglLevMAAAAAAHgkYM95hKYlCMwWAgjLfaUHD6ISAAAAACAQEptlL3pfdZsIzQ4QmDXIFdYMxs+ePvJBkcqd1wMFAAAAAIBO8jy/VGTTlyvtlYJGuM4egMA8IM/ztaKWrrscJlq508BjhwMAAAAAYGKUobiW2PSx3jfRzC3X9QcITKFmr1sPfSyfJCqJVgIAAAAARIqimj762Jv1/7ooCmPauXgWLzCVDrv1UGf5oB0MBhYAAAAAQCIo0LTxkD5r6jPXS0+bXbTA9JQOe4NpDwBA2lRMgVwCT4tPm12kwFTu9c5xlwIHKQAAAACAmeGpk4TJbrxcolZYnMD0ELVc7GABAAAAAFgKHoJSi4xmLkZgehggi6qx1Pk6cfyYx6XnoAMAAABA2nio0VxUgGoRAlMOUduBUcsXCctZuMJWhGP5MiZHZ/rPZx6b0B5idnDKOtVnvV7Lf4c50nJQfcO7pZ8HCMpzzA9xTxt4ADA9r3hwLAtpCiM0jwf88L0MgGbfaWLWAlMOseYivh/w53uJ0iQbqFYWMCsJx3ceG8uGohShpQC9j32hCP3J89xMzJ85dRAIM4+cxDxvcw8AJI2JRN2aNQriu5lIX6z1GhKYmb3T7GwFpqIktwN3GO904ZMQNhroZxKTq8CRyKl4kPh8VOotk3rC5Hn+PPDeBOjij9hrXRCYAMlxpzXlLaU/UKJgznZgIMtkSF7MdT07S4Gp8PWXAX/6ImF5G+CwvCFBuaq8XJvDpsqDoszPAuVIoPKoJQAAAABJRU5ErkJggg==';
 document.getElementById('nav-logo').src = LOGO;
 document.getElementById('footer-logo').src = LOGO;
 
 const prods = [
-  {name:'Rocket 2242 NVMe SSD',sku:'SB-2742-1TB',gross:15869.31,net:9949.66,orders24,spike:true},
+  {name:'Rocket 2242 NVMe SSD',sku:'SB-2742-1TB',gross:15869.31,net:9949.66,orders:4,spike:true},
   {name:'Rocket 4 Plus SSD',sku:'SB-RKT4P-4TB',gross:6159.93,net:6159.93,orders:3,spike:true},
   {name:'USB 3.2 3.5" SATA Docking Station',sku:'DS-SC5B',gross:2519.55,net:1931.68,orders:8},
   {name:'Rocket 2242 NVMe SSD',sku:'SB-2742-2TB',gross:2239.93,net:2095.96,orders:7},
   {name:'Rocket XTRM 5',sku:'SB-XTM5-2TB',gross:1999.96,net:979.20,orders:3},
-  {name:'Rocket XTRM 5',sku:'SB-XTM5-4TB',gross:1559.98,net:1326.00,orders:2��(��������Y��ѥ�����\��A��ЁUM�A�
-��ɝ�Ȝ�ͭ��`��AQ���ɽ��������Ա�������ظ�䱽ɑ��������(��������UM��ѕɹ���Mѕɕ����M�չ�����ѕȜ�ͭ��T�55M���ɽ������ĸ�̱�������ظ�౽ɑ�������(��������UM�̸Ȁ̸Ԉ�MQ��������Mхѥ����ͭ��L�M����ɽ�������ر������Ը�ܱ�ɑ�������(��������I����Ѐ�����9Y5��и���ͭ��M�������Q���ɽ�������ܱ��������ܱ�ɑ�������(���������صA��ЁUM�̸��!Ո�����
-��ɝ�Ȝ�ͭ��!�AT�؜��ɽ�����и�Ա��������̱�ɑ�������(��������UM�̸��Ѽ�MQ����ѕȜ�ͭ���MM!���ɽ��������ȱ������и�ܱ�ɑ��������(��������I����ЁX���ȁ5��ɽMa������ͭ��M�5D����؜��ɽ�����ĸ�ȱ������ȸ����ɑ�������(��������I����Ё�����aQI4�Q́MM��ͭ��M�aQ58��Q���ɽ�������䱹�����ȸ����ɑ�������(��������Q�չ��ɉ��Ѐ́I����ЁaQI4�A��̜�ͭ��M�aQ5@��Q���ɽ�������䱹�������䱽ɑ�������(��������UM�̸Ȁ̸Ԉ�MQ��������Mхѥ����ͭ��L�U
-Q���ɽ�������䱹�����������ɑ�������(��������UM�̸��!Ո�]�Ѡ�A�ݕȁMݥэ��̜�ͭ��!�	T�����ɽ�������౹�������౽ɑ��������(��������UM�̸ȁ9Y5��MQ�������ɔ��ͭ���M9Y���ɽ���������������ĸ�б�ɑ��������(��������TSB-C to SSD/SATA/IDE Converter',sku:'USB-DS12',gross:559.84,net:554.60,orders:16},
+  {name:'Rocket XTRM 5',sku:'SB-XTM5-4TB',gross:1559.98,net:1326.00,orders:2},
+  {name:'Voltik 252W 8-Port USB PD Charger',sku:'AX-8PTC',gross:1349.85,net:1286.89,orders:13},
+  {name:'USB External Stereo 3D Sound Adapter',sku:'AU-MMSA',gross:1321.53,net:1186.68,orders:8},
+  {name:'USB 3.2 3.5" SATA Docking Station',sku:'DS-SC4B',gross:919.96,net:885.47,orders:4},
+  {name:'Rocket 2230 NVMe 4.0',sku:'SB-2130-1TB',gross:839.97,net:839.97,orders:3},
+  {name:'16-Port USB 3.0 Hub and Charger',sku:'HB-PU16',gross:824.45,net:798.23,orders:7},
+  {name:'USB 3.0 to SATA Adapter',sku:'EC-SSHD',gross:750.42,net:734.47,orders:35},
+  {name:'Rocket V30 A2 MicroSDXC 256GB',sku:'SD-MQ30-256',gross:701.82,net:602.40,orders:2},
+  {name:'Rocket nano XTRM TB3 SSD',sku:'SB-XTMN-4TB',gross:649.99,net:552.50,orders:1},
+  {name:'Thunderbolt 3 Rocket XTRM Plus',sku:'SB-XTMP-4TB',gross:649.99,net:649.99,orders:1},
+  {name:'USB 3.2 3.5" SATA Docking Station',sku:'DS-UCTB',gross:599.99,net:570.00,orders:1},
+  {name:'USB 3.0 Hub With Power Switches',sku:'HB-BU10',gross:599.88,net:599.88,orders:10},
+  {name:'USB 3.2 NVMe/SATA Enclosure',sku:'EC-SNVE',gross:599.00,net:531.34,orders:19},
+  {name:'USB-C to SSD/SATA/IDE Converter',sku:'USB-DS12',gross:559.84,net:554.60,orders:16},
   {name:'USB 3.0 Hub With Power Switches',sku:'HB-B7C3',gross:479.50,net:460.32,orders:7},
 ];
 const grandTotal = 47093.14, maxGross = prods[0].gross;
