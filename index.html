@@ -72,7 +72,7 @@ body{background:var(--bg);color:var(--t1);font-family:var(--fb);min-height:100vh
 .sp-on{font-family:var(--fh);font-weight:700;font-size:12px;color:var(--bl)}
 .sp-ot{font-family:var(--fh);font-weight:800;font-size:15px;color:var(--t1)}
 .sp-prod{font-size:13px;color:var(--t1);font-weight:600;margin-bottom:3px}
-.sp-detail{font-size:12px;color:var(--t2)}
+.sp-detail{font-size:12px;color:var(--t2]}
 .untracked-tag{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:3px 8px;border-radius:4px;background:rgba(245,158,11,.12);color:var(--am);border:1px solid rgba(245,158,11,.3);margin-top:8px}
 .sp-rest{font-size:13px;color:var(--t3);padding:8px 0 6px}
 .attr-box{background:rgba(91,48,137,.08);border:1px solid rgba(91,48,137,.2);border-radius:8px;padding:12px 14px;margin-top:8px}
@@ -103,6 +103,18 @@ body{background:var(--bg);color:var(--t1);font-family:var(--fb);min-height:100vh
 .cvr-stat-sub{font-size:12px;color:var(--t2);margin-top:3px}
 .cvr-stat-delta{font-size:11px;color:var(--gn);font-weight:700;margin-top:4px}
 .gmds-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(81,160,216,.12);border:1px solid rgba(81,160,216,.25);border-radius:12px;padding:3px 8px;font-size:10px;color:var(--bl);font-weight:600;font-family:var(--fh);margin-left:6px;vertical-align:middle}
+.rebut-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:0}
+@media(max-width:700px){.rebut-grid{grid-template-columns:1fr}}
+.rebut-card{background:var(--s1);border:1px solid var(--bd);border-radius:12px;padding:22px;position:relative;overflow:hidden}
+.rebut-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad)}
+.rebut-stat{font-family:var(--fh);font-weight:800;font-size:36px;color:var(--t1);line-height:1;margin-bottom:4px}
+.rebut-card:first-child .rebut-stat{color:#ef4444}
+.rebut-card:nth-child(2) .rebut-stat{color:var(--bl)}
+.rebut-card:last-child .rebut-stat{color:var(--gn)}
+.rebut-label{font-family:var(--fh);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--t3);margin-bottom:10px}
+.rebut-text{font-size:13px;color:var(--t2);line-height:1.6}
+.rebut-text strong{color:var(--t1)}
+.rebut-icon{font-size:20px;margin-bottom:8px}
 .footer{border-top:1px solid var(--bd);padding:18px 32px;display:flex;justify-content:space-between;align-items:center;margin-top:24px}
 .footer-t{font-size:11px;color:var(--t3)}
 .footer img{height:22px;opacity:.65}
@@ -163,13 +175,14 @@ body{background:var(--bg);color:var(--t1);font-family:var(--fb);min-height:100vh
   <div class="section">
     <div class="sec-eyebrow">July 2026 · July 1–23 Only</div>
     <div class="sec-title">Revenue by Product</div>
-    <div class="sec-sub">Gross sales ranking · Top 12 of 82 products sold this month</div>
+    <div class="sec-sub">Gross sales ranking · Top 20 of 82 products · SKU-level breakdown</div>
     <div class="card-flush">
       <table class="ptable">
         <thead>
           <tr>
             <th style="padding-left:20px;width:36px">#</th>
             <th>Product</th>
+            <th style="font-size:11px;letter-spacing:.04em">SKU</th>
             <th class="r">Gross Sales</th>
             <th class="r">Net Sales</th>
             <th class="r">Orders</th>
@@ -180,8 +193,8 @@ body{background:var(--bg);color:var(--t1);font-family:var(--fb);min-height:100vh
       </table>
     </div>
     <div class="ins-row">
-      <div class="ins-pill">⚠ Top 2 are <strong>inflated by untracked bulk orders</strong> — see spike analysis below</div>
-      <div class="ins-pill">💡 Excluding spikes, <strong>Rocket XTRM 5</strong> leads organic July at $3,560</div>
+      <div class="ins-pill">⚠ SB-2742-1TB &amp; SB-RKT4P-4TB <strong>inflated by untracked bulk orders</strong> — see spike analysis below</div>
+      <div class="ins-pill">💡 Excluding spikes, <strong>SB-XTM5-2TB</strong> leads organic July at $2,000 gross</div>
     </div>
   </div>
 
@@ -335,6 +348,59 @@ body{background:var(--bg);color:var(--t1);font-family:var(--fb);min-height:100vh
     </div>
   </div>
 
+
+  <!-- MARKET CONTEXT REBUTTAL -->
+  <div class="section">
+    <div class="sec-eyebrow">Context vs. Causality — CEO Briefing</div>
+    <div class="sec-title">Why This Is Not Just the SSD Market</div>
+    <div class="sec-sub">SSD shortage increases demand signals — but the store's own numbers prove something else is happening.</div>
+    <div class="rebut-grid">
+      <div class="rebut-card">
+        <div class="rebut-icon">📉</div>
+        <div class="rebut-stat">−63%</div>
+        <div class="rebut-label">Traffic Jul '26 vs Jul '25</div>
+        <div class="rebut-text">If the shortage drove sales, traffic would be <strong>up</strong>. Sessions dropped from 163k → 60k. The market brought fewer visitors, not more.</div>
+      </div>
+      <div class="rebut-card">
+        <div class="rebut-icon">🎯</div>
+        <div class="rebut-stat">3.5×</div>
+        <div class="rebut-label">More efficient vs Jul '25</div>
+        <div class="rebut-text">239 orders from 60k sessions vs. 187 orders from 163k. At last year's CVR, those 60k visitors would have produced only <strong>68 orders</strong>.</div>
+      </div>
+      <div class="rebut-card">
+        <div class="rebut-icon">🔌</div>
+        <div class="rebut-stat">$11.2k</div>
+        <div class="rebut-label">Non-SSD revenue, top 20 SKUs</div>
+        <div class="rebut-text">Voltik chargers, USB hubs, sound adapters, docking stations. SSD shortage doesn't move these — <strong>store quality does</strong>.</div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <div style="font-family:var(--fh);font-weight:700;font-size:14px;color:var(--t1);margin-bottom:16px">Market drives traffic. Store optimization drives conversion.</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+        <div>
+          <div style="font-family:var(--fh);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--t3);margin-bottom:10px">What market context explains</div>
+          <div style="font-size:13px;color:var(--t2);line-height:2.1">
+            ↑ Search interest in SSDs<br>
+            ↑ Higher unit prices (shortage premium)<br>
+            ↑ B2B buyers stocking up in bulk
+          </div>
+        </div>
+        <div>
+          <div style="font-family:var(--fh);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--bl);margin-bottom:10px">What only store optimization explains</div>
+          <div style="font-size:13px;color:var(--t2);line-height:2.1">
+            ✓ CVR 0.19% → 0.40% (visitor-to-buyer rate)<br>
+            ✓ +28% more orders with 63% <em>less</em> traffic<br>
+            ✓ Non-SSD categories growing in parallel<br>
+            ✓ $13,031 directly attributed Month 1 revenue
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:18px;padding:16px 18px;background:rgba(81,160,216,.07);border:1px solid rgba(81,160,216,.2);border-radius:10px;font-size:13px;color:var(--t2);line-height:1.7">
+        <span style="font-family:var(--fh);font-weight:700;color:var(--bl)">The decisive test:</span> July 2025 — also during elevated SSD demand — had 163k sessions and produced only 187 orders. July 2026 had 60k sessions and produced 239 orders. If the market was the driver, the high-traffic month should have won. It didn't. That reversal is the GMDS effect.
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <div class="footer">
@@ -348,26 +414,24 @@ document.getElementById('nav-logo').src = LOGO;
 document.getElementById('footer-logo').src = LOGO;
 
 const prods = [
-  {name:'Rocket 2242 NVMe SSD',gross:18109.24,net:12045.62,orders:11,spike:true},
-  {name:'Rocket 4 Plus SSD',gross:5279.94,net:5279.94,orders:2,spike:true},
-  {name:'Rocket XTRM 5',gross:3559.94,net:2305.20,orders:5},
-  {name:'USB 3.2 3.5" SATA Docking Station',gross:2839.59,net:2263.72,orders:8},
-  {name:'USB External Stereo 3D Sound Adapter',gross:1321.53,net:1186.68,orders:8},
-  {name:'USB 3.0 Hub With Power Switches',gross:1143.72,net:1131.12,orders:22},
-  {name:'Voltik 252W 8-Port USB PD 3.0 Charger',gross:989.89,net:967.41,orders:10},
-  {name:'Rocket 2230 NVMe 4.0 1TB',gross:839.97,net:839.97,orders:3},
-  {name:'16-Port USB 3.0 Hub and Charger',gross:749.50,net:730.77,orders:6},
-  {name:'Rocket V30 A2 MicroSDXC',gross:701.82,net:602.40,orders:2},
-  {name:'Rocket nano XTRM Thunderbolt 3 SSD',gross:649.99,net:552.50,orders:1},
-  {name:'Thunderbolt 3 Rocket XTRM Plus',gross:649.99,net:649.99,orders:1},
+  {name:'Rocket 2242 NVMe SSD',sku:'SB-2742-1TB',gross:15869.31,net:9949.66,orders24,spike:true},
+  {name:'Rocket 4 Plus SSD',sku:'SB-RKT4P-4TB',gross:6159.93,net:6159.93,orders:3,spike:true},
+  {name:'USB 3.2 3.5" SATA Docking Station',sku:'DS-SC5B',gross:2519.55,net:1931.68,orders:8},
+  {name:'Rocket 2242 NVMe SSD',sku:'SB-2742-2TB',gross:2239.93,net:2095.96,orders:7},
+  {name:'Rocket XTRM 5',sku:'SB-XTM5-2TB',gross:1999.96,net:979.20,orders:3},
+  {name:'Rocket XTRM 5',sku:'SB-XTM5-4TB',gross:1559.98,net:1326.00,orders:2��(��������Y��ѥ�����\��A��ЁUM�A�
+��ɝ�Ȝ�ͭ��`��AQ���ɽ��������Ա�������ظ�䱽ɑ��������(��������UM��ѕɹ���Mѕɕ����M�չ�����ѕȜ�ͭ��T�55M���ɽ������ĸ�̱�������ظ�౽ɑ�������(��������UM�̸Ȁ̸Ԉ�MQ��������Mхѥ����ͭ��L�M����ɽ�������ر������Ը�ܱ�ɑ�������(��������I����Ѐ�����9Y5��и���ͭ��M�������Q���ɽ�������ܱ��������ܱ�ɑ�������(���������صA��ЁUM�̸��!Ո�����
+��ɝ�Ȝ�ͭ��!�AT�؜��ɽ�����и�Ա��������̱�ɑ�������(��������UM�̸��Ѽ�MQ����ѕȜ�ͭ���MM!���ɽ��������ȱ������и�ܱ�ɑ��������(��������I����ЁX���ȁ5��ɽMa������ͭ��M�5D����؜��ɽ�����ĸ�ȱ������ȸ����ɑ�������(��������I����Ё�����aQI4�Q́MM��ͭ��M�aQ58��Q���ɽ�������䱹�����ȸ����ɑ�������(��������Q�չ��ɉ��Ѐ́I����ЁaQI4�A��̜�ͭ��M�aQ5@��Q���ɽ�������䱹�������䱽ɑ�������(��������UM�̸Ȁ̸Ԉ�MQ��������Mхѥ����ͭ��L�U
+Q���ɽ�������䱹�����������ɑ�������(��������UM�̸��!Ո�]�Ѡ�A�ݕȁMݥэ��̜�ͭ��!�	T�����ɽ�������౹�������౽ɑ��������(��������UM�̸ȁ9Y5��MQ�������ɔ��ͭ���M9Y���ɽ���������������ĸ�б�ɑ��������(��������TSB-C to SSD/SATA/IDE Converter',sku:'USB-DS12',gross:559.84,net:554.60,orders:16},
+  {name:'USB 3.0 Hub With Power Switches',sku:'HB-B7C3',gross:479.50,net:460.32,orders:7},
 ];
-const grandTotal = 44794.35, maxGross = prods[0].gross;
+const grandTotal = 47093.14, maxGross = prods[0].gross;
 const tbody = document.getElementById('prodBody');
 prods.forEach((p,i) => {
   const share = ((p.gross/grandTotal)*100).toFixed(1);
   const bw = Math.round((p.gross/maxGross)*160);
   const tr = document.createElement('tr');
-  tr.innerHTML = `<td style="padding-left:20px" class="rank-n">${i+1}</td><td>${p.name}${p.spike?'<span class="spike-tag">untracked</span>':''}<span class="bar-mini" style="width:${bw}px"></span></td><td class="m">$${p.gross.toLocaleString('en-US',{minimumFractionDigits:2})}</td><td class="r">$${p.net.toLocaleString('en-US',{minimumFractionDigits:2})}</td><td class="r">${p.orders}</td><td class="r" style="padding-right:20px">${share}%</td>`;
+  tr.innerHTML = `<td style="padding-left:20px" class="rank-n">${i+1}</td><td>${p.name}${p.spike?'<span class="spike-tag">untracked</span>':''}<span class="bar-mini" style="width:${bw}px"></span></td><td style="font-family:'Courier New',monospace;font-size:11px;color:var(--t3);white-space:nowrap">${p.sku}</td><td class="m">$${p.gross.toLocaleString('en-US',{minimumFractionDigits:2})}</td><td class="r">$${p.net.toLocaleString('en-US',{minimumFractionDigits:2})}</td><td class="r">${p.orders}</td><td class="r" style="padding-right:20px">${share}%</td>`;
   tbody.appendChild(tr);
 });
 
